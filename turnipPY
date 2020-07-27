@@ -1,0 +1,33 @@
+#!/usr/bin/python3
+
+import os
+import time
+import math
+
+# Define the Clear Function
+def clear():
+    os.system('cls' if os.name == 'nt' else 'echo -e \\\\033c')
+
+# ROI Margin Function
+def turnipMargin():
+    margin = str(round(turnipSellingPrice / turnipBuyingPrice * 100, 2))
+    print ("Your margin is :",margin,"%")
+
+# Clear the Screen
+clear()
+
+pocketSize = int(input("How many turnips (stacks of ten) would you like to buy? "))
+turnipBuyingPrice = int(input("What is the current buying price of turnips? "))
+turnipSellingPrice = int(input("What is the selling price of turnips? "))
+turnipProfit = pocketSize * turnipBuyingPrice * 100
+
+# Results
+print ("You'll make %s bells!" % (turnipProfit))
+
+turnipMargin()
+
+# Output and Wait for Next Evaluation
+time.sleep(15)
+
+# Final Screen Clear
+clear()
