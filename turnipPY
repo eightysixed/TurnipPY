@@ -2,32 +2,49 @@
 
 import os
 import time
-import math
 
 # Define the Clear Function
 def clear():
     os.system('cls' if os.name == 'nt' else 'echo -e \\\\033c')
 
-# ROI Margin Function
-def turnipMargin():
+# Let's Buy Some Turnips!
+def buyTurnips():
+    clear()
+    pocketSize = int(input("How many turnips (stacks of ten) would you like to buy? "))
+    turnipBuyingPrice = int(input("What is the current buying price of turnips? "))
+    turnipCost = pocketSize * turnipBuyingPrice * 100
+    print ("You will need %s bells to purchase the turnips" % (turnipCost))
+
+# Let's Sell Some Turnips!
+def sellTurnips():
+    clear()
+    pocketSize = int(input("How many turnips (stacks of 10) are you selling? "))
+    turnipSellingPrice = int(input("What is the selling price of turnips? "))
+    turnipBuyingPrice = int(input("How much did you buy the turnips for? "))
+    turnipProfit = pocketSize * turnipBuyingPrice * 100
     margin = str(round(turnipSellingPrice / turnipBuyingPrice * 100, 2))
+
+    # Results
+    print ("You'll make %s bells!" % (turnipProfit))
     print ("Your margin is :",margin,"%")
 
-# Clear the Screen
+# Clear the Screen Before Beginning
 clear()
 
-pocketSize = int(input("How many turnips (stacks of ten) would you like to buy? "))
-turnipBuyingPrice = int(input("What is the current buying price of turnips? "))
-turnipSellingPrice = int(input("What is the selling price of turnips? "))
-turnipProfit = pocketSize * turnipBuyingPrice * 100
+# Are You Buying or Selling Turnips?
+print ("1. I'm Buying Turnips!")
+print ("2. I'm Selling Turnips")
+print ("")
+turnipChoice = int(input("Are you buying or selling turnips? Make a selection from above! "))
 
-# Results
-print ("You'll make %s bells!" % (turnipProfit))
+# Let's Buy Some Turnips!
+if turnipChoice == 1:
+    buyTurnips()
 
-turnipMargin()
+# Let's Sell Some Turnips!
+elif turnipChoice == 2:
+    sellTurnips()
 
-# Output and Wait for Next Evaluation
-time.sleep(15)
-
-# Final Screen Clear
-clear()
+else:
+    print ("Let's try again! Please make a proper selection!")
+    print ("")
