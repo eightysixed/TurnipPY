@@ -10,23 +10,28 @@ def clear():
 # Let's Buy Some Turnips!
 def buyTurnips():
     clear()
+<<<<<<< Updated upstream
     pocketSize = int(input("How many turnips (stacks of ten) would you like to buy? "))
     turnipBuyingPrice = int(input("What is the current buying price of turnips? "))
+=======
+    pocketSize = int(input("How many turnips (stacks of 100) are you buying? "))
+    turnipBuyingPrice = int(input("What are the turnips selling for? "))
+>>>>>>> Stashed changes
     turnipCost = pocketSize * turnipBuyingPrice * 100
-    print ("You will need %s bells to purchase the turnips" % (turnipCost))
+    print ("You will need %s bells to make your purchase!" % ("{:,}".format(turnipCost)))
 
 # Let's Sell Some Turnips!
 def sellTurnips():
     clear()
-    pocketSize = int(input("How many turnips (stacks of 10) are you selling? "))
-    turnipSellingPrice = int(input("What is the selling price of turnips? "))
-    turnipBuyingPrice = int(input("How much did you buy the turnips for? "))
-    turnipProfit = pocketSize * turnipBuyingPrice * 100
-    margin = str(round(turnipSellingPrice / turnipBuyingPrice * 100, 2))
+    pocketSize = int(input("How many turnips (stacks of 100) are you selling? "))
+    turnipSellingPrice = int(input("What is current selling price? "))
+    turnipBuyingPrice = int(input("How much did you originally pay for the turnips? "))
+    turnipProfit = pocketSize * turnipSellingPrice * 100
+    turnipMargin = str(round(turnipSellingPrice / turnipBuyingPrice * 100, 2))
 
     # Results
-    print ("You'll make %s bells!" % (turnipProfit))
-    print ("Your margin is :",margin,"%")
+    print ("You'll make %s bells!" % (("{:,}".format(turnipProfit))))
+    print ("Your margin is :",turnipMargin,"%")
 
 # Clear the Screen Before Beginning
 clear()
@@ -45,6 +50,7 @@ if turnipChoice == 1:
 elif turnipChoice == 2:
     sellTurnips()
 
+# YOLO
 else:
     print ("Let's try again! Please make a proper selection!")
     print ("")
