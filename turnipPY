@@ -10,7 +10,7 @@ def clear():
 # Let's Buy Some Turnips!
 def buyTurnips():
     clear()
-    pocketSize = int(input("How many turnips (stacks of ten) would you like to buy? "))
+    pocketSize = int(input("How many turnips (stacks of 100) would you like to buy? "))
     turnipBuyingPrice = int(input("What is the current buying price of turnips? "))
     turnipCost = pocketSize * turnipBuyingPrice * 100
     print ("You will need %s bells to purchase the turnips" % (turnipCost))
