@@ -22,16 +22,9 @@ def buyTurnipsLocal():
 # Are you buying turnips on someone else's island?
 def buyTurnipsRemote():
     clear()
-<<<<<<< Updated upstream
-    pocketSize = int(input("How many turnips (stacks of 100) would you like to buy? "))
-    turnipBuyingPrice = int(input("What is the current buying price of turnips? "))
-    pocketSize = int(input("How many turnips (stacks of 100) are you buying? "))
-    turnipBuyingPrice = int(input("What are the turnips selling for? "))
-=======
     pocketSize = int(input("How many turnips (bundles of 10) are you buying? "))
     turnipBuyingPrice = int(input("What are the turnips selling for? "))
     print ("")
->>>>>>> Stashed changes
     turnipCost = pocketSize * turnipBuyingPrice * 100
     print ("You will need %s bells to make your purchase!" % ("{:,}".format(turnipCost)))
     print ("")
