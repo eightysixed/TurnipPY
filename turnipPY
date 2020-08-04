@@ -7,47 +7,89 @@ import time
 def clear():
     os.system('cls' if os.name == 'nt' else 'echo -e \\\\033c')
 
-# Let's Buy Some Turnips!
-def buyTurnips():
+# Are you buying turnips on your own island?
+def buyTurnipsLocal():
     clear()
+    pocketSize = int(input("How many turnips (bundles of 10) are you buying? \n"))
+    print ("")
+    turnipBuyingPrice = int(input("What are the turnips selling for? \n"))
+    turnipCost = pocketSize * turnipBuyingPrice * 100
+    print ("")
+    print ("You will need %s bells to make your purchase! \n" % ("{:,}".format(turnipCost)))
+    print ("The max selling price for turnips on your island this week will be: %s bells" % ((turnipBuyingPrice) * 6))
+    print ("")
+
+# Are you buying turnips on someone else's island?
+def buyTurnipsRemote():
+    clear()
+<<<<<<< Updated upstream
     pocketSize = int(input("How many turnips (stacks of 100) would you like to buy? "))
     turnipBuyingPrice = int(input("What is the current buying price of turnips? "))
     pocketSize = int(input("How many turnips (stacks of 100) are you buying? "))
     turnipBuyingPrice = int(input("What are the turnips selling for? "))
+=======
+    pocketSize = int(input("How many turnips (bundles of 10) are you buying? "))
+    turnipBuyingPrice = int(input("What are the turnips selling for? "))
+    print ("")
+>>>>>>> Stashed changes
     turnipCost = pocketSize * turnipBuyingPrice * 100
     print ("You will need %s bells to make your purchase!" % ("{:,}".format(turnipCost)))
+    print ("")
+
+# Let's Buy Some Turnips!
+def buyTurnips():
+    clear()
+    print ("Are you buying turnips on your own island (1) or somewhere far away? (2)")
+    turnipLocation = input("Where are you buying your turnips today? \n")
+
+    if turnipLocation == "1":
+        clear()
+        buyTurnipsLocal()
+    elif turnipLocation == "2":
+        clear()
+        buyTurnipsRemote()
+    else:
+        YOLO()
 
 # Let's Sell Some Turnips!
 def sellTurnips():
     clear()
-    pocketSize = int(input("How many turnips (stacks of 100) are you selling? "))
-    turnipSellingPrice = int(input("What is current selling price? "))
-    turnipBuyingPrice = int(input("How much did you originally pay for the turnips? "))
+    pocketSize = int(input("How many turnips (bundles of 10) are you selling? "))
+    turnipSellingPrice = int(input("What is current selling price? \n"))
+    print ("")
+    turnipBuyingPrice = int(input("How much did you originally pay for the turnips?\n"))
+    print ("")
     turnipProfit = pocketSize * turnipSellingPrice * 100
     turnipMargin = str(round(turnipSellingPrice / turnipBuyingPrice * 100, 2))
 
     # Results
     print ("You'll make %s bells!" % (("{:,}".format(turnipProfit))))
-    print ("Your margin is :",turnipMargin,"%")
+    print ("")
+    print ("Your margin is :",turnipMargin,"% \n")
 
-# Clear the Screen Before Beginning
-clear()
-
-# Are You Buying or Selling Turnips?
-print ("1. I'm Buying Turnips!")
-print ("2. I'm Selling Turnips")
-print ("")
-turnipChoice = int(input("Are you buying or selling turnips? Make a selection from above! "))
-
-# Let's Buy Some Turnips!
-if turnipChoice == 1:
-    buyTurnips()
-
-# Let's Sell Some Turnips!
-elif turnipChoice == 2:
-    sellTurnips()
-
-# YOLO
-else:
+def YOLO():
     print ("Let's try again! Please make a proper selection!")
     print ("")
+
+def Sunday():
+    clear()
+    # Are You Buying or Selling Turnips?
+    print ("1. I want to buy some turnips!")
+    print ("2. I want to sell some turnips!")
+    print ("")
+    turnipChoice = int(input("Are you buying or selling turnips? Make a selection from above! "))
+
+    # Let's Buy Some Turnips!
+    if turnipChoice == 1:
+        buyTurnips()
+
+    # Let's Sell Some Turnips!
+    elif turnipChoice == 2:
+        sellTurnips()
+
+    # YOLO
+    else:
+        YOLO()
+
+# Clear the Screen Before Beginning
+Sunday()
