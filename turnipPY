@@ -7,69 +7,11 @@ import time
 def clear():
     os.system('cls' if os.name == 'nt' else 'echo -e \\\\033c')
 
-# Are you buying turnips on your own island?
-def buyTurnipsLocal():
-    clear()
-    pocketSize = int(input("How many turnips (bundles of 10) are you buying? \n"))
-    print ("")
-    turnipBuyingPrice = int(input("What are the turnips selling for? \n"))
-    turnipCost = pocketSize * turnipBuyingPrice * 100
-    print ("")
-    print ("You will need %s bells to make your purchase! \n" % ("{:,}".format(turnipCost)))
-    print ("The max selling price for turnips on your island this week will be: %s bells" % ((turnipBuyingPrice) * 6))
-    print ("")
-
-# Are you buying turnips on someone else's island?
-def buyTurnipsRemote():
-    clear()
-    pocketSize = int(input("How many turnips (bundles of 10) are you buying? "))
-    turnipBuyingPrice = int(input("What are the turnips selling for? "))
-    print ("")
-    turnipCost = pocketSize * turnipBuyingPrice * 100
-    print ("You will need %s bells to make your purchase!" % ("{:,}".format(turnipCost)))
-    print ("")
-
-# Let's Buy Some Turnips!
-def buyTurnips():
-    clear()
-    print ("Are you buying turnips on your own island (1) or somewhere far away? (2)")
-    turnipLocation = input("Where are you buying your turnips today? \n")
-
-    if turnipLocation == "1":
-        clear()
-        buyTurnipsLocal()
-    elif turnipLocation == "2":
-        clear()
-        buyTurnipsRemote()
-    else:
-        YOLO()
-
-# Let's Sell Some Turnips!
-def sellTurnips():
-    clear()
-    pocketSize = int(input("How many turnips (bundles of 10) are you selling? "))
-    turnipSellingPrice = int(input("What is current selling price? \n"))
-    print ("")
-    turnipBuyingPrice = int(input("How much did you originally pay for the turnips?\n"))
-    print ("")
-    turnipProfit = pocketSize * turnipSellingPrice * 100
-    turnipMargin = str(round(turnipSellingPrice / turnipBuyingPrice * 100, 2))
-
-    # Results
-    print ("You'll make %s bells!" % (("{:,}".format(turnipProfit))))
-    print ("")
-    print ("Your margin is :",turnipMargin,"% \n")
-
-def YOLO():
-    print ("Let's try again! Please make a proper selection!")
-    print ("")
-
 def Sunday():
     clear()
     # Are You Buying or Selling Turnips?
     print ("1. I want to buy some turnips!")
-    print ("2. I want to sell some turnips!")
-    print ("")
+    print ("2. I want to sell some turnips! \n \n")
     turnipChoice = int(input("Are you buying or selling turnips? Make a selection from above! "))
 
     # Let's Buy Some Turnips!
@@ -84,5 +26,72 @@ def Sunday():
     else:
         YOLO()
 
-# Clear the Screen Before Beginning
+# Let's Buy Some Turnips!
+def buyTurnips():
+    clear()
+    print ("Are you buying turnips on your own island? (1)")
+    print("Or are you buying turnips on an island far away? (2)")
+    print ("")
+    turnipLocation = input("Where are you buying your turnips today? \n")
+
+    if turnipLocation == "1":
+        clear()
+        buyTurnipsLocal()
+    elif turnipLocation == "2":
+        clear()
+        buyTurnipsRemote()
+    else:
+        YOLO()
+
+# You're buying turnips from you own island
+def buyTurnipsLocal():
+    clear()
+    pocketSize = int(input("How many turnips (bundles of 10) are you buying? (Max: 40) \n"))
+    print ("")
+    turnipBuyingPrice = int(input("How much is Daisy Mae selling turnips for? \n"))
+    turnipCost = pocketSize * turnipBuyingPrice * 100
+    print ("")
+    pocketBells = int(input("How many bells do you have in your pockets? \n"))
+    print ("")
+    bellsNeeded = turnipCost - pocketBells
+    print ("You will need a total of %s bells to complete your purchase! \n" % ("{:,}".format(turnipCost)))
+    print ("You will need to withdraw %s bells from the ADB to make your purchase! \n" % ("{:,}".format(bellsNeeded)))
+    print ("The max selling price for turnips on your island this week will be: %s bells" % ((turnipBuyingPrice) * 6))
+    print ("")
+
+# You're buying turnips from a far away island?
+def buyTurnipsRemote():
+    clear()
+    pocketSize = int(input("How many turnips (bundles of 10) are you buying? (Max: 40) \n"))
+    print ("")
+    turnipBuyingPrice = int(input("How much is Daisy Mae selling turnips for? \n"))
+    turnipCost = pocketSize * turnipBuyingPrice * 100
+    print ("")
+    pocketBells = int(input("How many bells do you have in your pockets? \n"))
+    print ("")
+    bellsNeeded = turnipCost - pocketBells
+    print ("You will need a total of %s bells to complete your purchase! \n" % ("{:,}".format(turnipCost)))
+    print ("You will need to withdraw %s bells from the ADB to make your purchase! \n" % ("{:,}".format(bellsNeeded)))
+    print ("The max selling price for turnips on their island this week will be: %s bells" % ((turnipBuyingPrice) * 6))
+    print ("")
+
+# Let's Sell Some Turnips!
+def sellTurnips():
+    clear()
+    pocketSize = int(input("How many turnips (bundles of 10) are you selling? (Max:40)"))
+    turnipSellingPrice = int(input("What is current selling price? \n"))
+    print ("")
+    turnipBuyingPrice = int(input("How much did you originally pay for the turnips? \n"))
+    print ("")
+    turnipProfit = pocketSize * turnipSellingPrice * 100
+    turnipMargin = str(round(turnipSellingPrice / turnipBuyingPrice * 100, 2))
+
+    # Results
+    print ("You'll make %s bells!" % (("{:,}".format(turnipProfit))))
+    print ("")
+    print ("Your margin is :",turnipMargin,"% \n")
+
+def YOLO():
+    print ("Let's try again! Please make a proper selection! \n \n")
+
 Sunday()
