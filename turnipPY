@@ -6,7 +6,7 @@ import time
 # Define the Clear Function
 def clear():
     os.system('cls' if os.name == 'nt' else 'echo -e \\\\033c')
-
+# Ready, Set, Turnip!
 def Sunday():
     clear()
     # Are You Buying or Selling Turnips?
@@ -14,15 +14,12 @@ def Sunday():
     print ("2. I want to sell some turnips! \n \n")
     turnipChoice = int(input("Are you buying or selling turnips? Make a selection from above! "))
 
-    # Let's Buy Some Turnips!
     if turnipChoice == 1:
         buyTurnips()
 
-    # Let's Sell Some Turnips!
     elif turnipChoice == 2:
         sellTurnips()
 
-    # YOLO
     else:
         YOLO()
 
@@ -43,7 +40,7 @@ def buyTurnips():
     else:
         YOLO()
 
-# You're buying turnips from you own island
+# You're buying turnips from your own island!
 def buyTurnipsLocal():
     clear()
     pocketSize = int(input("How many turnips (bundles of 10) are you buying? (Max: 40) \n"))
@@ -55,11 +52,11 @@ def buyTurnipsLocal():
     print ("")
     bellsNeeded = turnipCost - pocketBells
     print ("You will need a total of %s bells to complete your purchase! \n" % ("{:,}".format(turnipCost)))
-    print ("You will need to withdraw %s bells from the ADB to make your purchase! \n" % ("{:,}".format(bellsNeeded)))
+    print ("You will need to withdraw %s bells from the ABD to make your purchase! \n" % ("{:,}".format(bellsNeeded)))
     print ("The max selling price for turnips on your island this week will be: %s bells" % ((turnipBuyingPrice) * 6))
     print ("")
 
-# You're buying turnips from a far away island?
+# You're buying turnips from a far away island!
 def buyTurnipsRemote():
     clear()
     pocketSize = int(input("How many turnips (bundles of 10) are you buying? (Max: 40) \n"))
@@ -71,7 +68,7 @@ def buyTurnipsRemote():
     print ("")
     bellsNeeded = turnipCost - pocketBells
     print ("You will need a total of %s bells to complete your purchase! \n" % ("{:,}".format(turnipCost)))
-    print ("You will need to withdraw %s bells from the ADB to make your purchase! \n" % ("{:,}".format(bellsNeeded)))
+    print ("You will need to withdraw %s bells from the ABD to make your purchase! \n" % ("{:,}".format(bellsNeeded)))
     print ("The max selling price for turnips on their island this week will be: %s bells" % ((turnipBuyingPrice) * 6))
     print ("")
 
