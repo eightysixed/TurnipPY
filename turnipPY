@@ -17,10 +17,8 @@ def Sunday():
 
     if turnipChoice == 1:
         buyTurnips()
-
     elif turnipChoice == 2:
         sellTurnips()
-
     else:
         YOLO()
 
