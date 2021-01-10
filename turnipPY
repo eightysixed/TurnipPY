@@ -19,7 +19,7 @@ class color: # Text formatting for 'in-game immersion'
 def clear():
     os.system('cls' if os.name == 'nt' else 'echo -e \\\\033c')
 
-# Read as if it were in-game spoken by Isabelle
+# isabelleTalk will read as it would in-game by Isabelle
 def isabelleTalk(txt):
     for x in txt:  # Cycle through the text, one character at a time
         print(x, end = '', flush = True)  # Flush buffer
@@ -32,10 +32,10 @@ def Sunday(): # It all begins here!
     isabelleTalk ("Welcome to TurnipPY! \n") # Sup?
     sleep(0.5)
     isabelleTalk ("Right now on your island it's %s and the weather is... comfortable."
-          % time.asctime(time.localtime(time.time()) ))
+          % time.asctime(time.localtime(time.time()) )) #Dodo / Isabelle
     print ("")
     sleep(0.9)
-    isabelleTalk ("No news today, so let's talk about these turnip transactions... \n")
+    isabelleTalk ("No news today, so let's talk about these turnip transactions... \n") #Isabelle Talk
     sleep(0.5)
     # Are You Buying or Selling Turnips?
     print ("1.) I want to buy turnips from Daisy Mae!")
@@ -81,9 +81,9 @@ def buyTurnips():
     print ("Nook's Cranny will have a max selling price for turnips this week of %s bells"
            % ((daisyPrice) * 6))
     print ("\n")
-    isabelleTalk ("Turnips, turnips! Watch 'em rise!")
+    isabelleTalk ("Turnips, turnips! Watch 'em rise!") # Daisy May congratulates you
     sleep(0.3)
-    isabelleTalk ("Try to earn a nice surprise! \n \n")
+    isabelleTalk ("Try to earn a nice surprise! \n \n") # Surprise!
     sleep(2.0)
     exit()
 
@@ -121,7 +121,7 @@ def sellTurnips():
     exit()
     # Stop with the logs
     
-def residentServices():
+def residentServices(): # This is not ready yet.
     clear()
     YOLO()
     Sunday()
