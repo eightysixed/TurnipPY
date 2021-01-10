@@ -1,93 +1,137 @@
 #!/usr/bin/python3
-
 import os
 import time
+from time import sleep
+
+class color: # Text formatting for 'in-game immersion'
+   PURPLE = '\033[95m'
+   CYAN = '\033[96m'
+   DARKCYAN = '\033[36m'
+   BLUE = '\033[94m'
+   GREEN = '\033[92m'
+   YELLOW = '\033[93m'
+   RED = '\033[91m'
+   BOLD = '\033[1m'
+   UNDERLINE = '\033[4m'
+   END = '\033[0m'
 
 # Define the Clear Function
 def clear():
     os.system('cls' if os.name == 'nt' else 'echo -e \\\\033c')
-    
-# Ready, Set, Turnip!
-def Sunday():
-    clear()
-    # Are You Buying or Selling Turnips?
-    print ("1. I want to buy some turnips!")
-    print ("2. I want to sell some turnips! \n \n")
-    turnipChoice = int(input("Are you buying or selling turnips? Make a selection from above! "))
 
+# Read as if it were in-game spoken by Isabelle
+def isabelleTalk(txt):
+    for x in txt:  # Cycle through the text, one character at a time
+        print(x, end = '', flush = True)  # Flush buffer
+        sleep(0.03) # Hang on - It's the 'in-game experience'
+    print()
+
+# Ready, Set, Turnip!
+def Sunday(): # It all begins here!
+    clear()
+    isabelleTalk ("Welcome to TurnipPY! \n") # Sup?
+    sleep(0.5)
+    isabelleTalk ("Right now on your island it's %s and the weather is... comfortable."
+          % time.asctime(time.localtime(time.time()) ))
+    print ("")
+    sleep(0.9)
+    isabelleTalk ("No news today, so let's talk about these turnip transactions... \n")
+    sleep(0.5)
+    # Are You Buying or Selling Turnips?
+    print ("1.) I want to buy turnips from Daisy Mae!")
+    print ("2.) I want to sell turnips at Nook's Cranny!")
+    print ("3.) I want to visit Resident Services! \n")
+    turnipChoice = int(input("Are you buying or selling turnips? Make a selection from above! \n"))
+    # Conditional Statement to See Where We Go Next
     if turnipChoice == 1:
         buyTurnips()
     elif turnipChoice == 2:
         sellTurnips()
+    elif turnipChoice == 3:
+        residentServices()
     else:
         YOLO()
+        sleep(1.2)
+        Sunday()
+    exit()
 
 # Let's Buy Some Turnips!
 def buyTurnips():
     clear()
-    print ("Are you buying turnips on your own island? (1)")
-    print("Or are you buying turnips on an island far away? (2)")
-    print ("")
-    turnipLocation = input("Where are you buying your turnips today? \n")
-
-    if turnipLocation == "1":
+    turnipBundles = int(input("How many turnips (bundles of 10) would you like to buy? (Max: 40) \n"))
+    if turnipBundles > 40: # Avoid acidentally typo'ing something greater than 40
+        print ("")
         clear()
-        buyTurnipsLocal()
-    elif turnipLocation == "2":
-        clear()
-        buyTurnipsRemote()
-    else:
         YOLO()
-
-# You're buying turnips from your own island!
-def buyTurnipsLocal():
-    clear()
-    pocketSize = int(input("How many turnips (bundles of 10) are you buying? (Max: 40) \n"))
+        sleep(1.2)
+        buyTurnips()
+    else:
+        print ("")
+    daisyPrice = int(input("How much is Daisy Mae selling turnips for today? \n"))
     print ("")
-    turnipBuyingPrice = int(input("How much is Daisy Mae selling turnips for? \n"))
-    turnipCost = pocketSize * turnipBuyingPrice * 100
+    turnipCost = int(turnipBundles * daisyPrice * 100)
+    pocketBells = int(input("How many bells do you currently have in your pockets? \n"))
     print ("")
-    pocketBells = int(input("How many bells do you have in your pockets? \n"))
-    print ("")
-    bellsNeeded = turnipCost - pocketBells
-    print ("You will need a total of %s bells to complete your purchase! \n" % ("{:,}".format(turnipCost)))
-    print ("You will need to withdraw %s bells from the ABD to make your purchase! \n" % ("{:,}".format(bellsNeeded)))
-    print ("The max selling price for turnips on your island this week will be: %s bells" % ((turnipBuyingPrice) * 6))
-    print ("")
-
-# You're buying turnips from a far away island!
-def buyTurnipsRemote():
-    clear()
-    pocketSize = int(input("How many turnips (bundles of 10) are you buying? (Max: 40) \n"))
-    print ("")
-    turnipBuyingPrice = int(input("How much is Daisy Mae selling turnips for? \n"))
-    turnipCost = pocketSize * turnipBuyingPrice * 100
-    print ("")
-    pocketBells = int(input("How many bells do you have in your pockets? \n"))
-    print ("")
-    bellsNeeded = turnipCost - pocketBells
-    print ("You will need a total of %s bells to complete your purchase! \n" % ("{:,}".format(turnipCost)))
-    print ("You will need to withdraw %s bells from the ABD to make your purchase! \n" % ("{:,}".format(bellsNeeded)))
-    print ("The max selling price for turnips on their island this week will be: %s bells" % ((turnipBuyingPrice) * 6))
-    print ("")
+    bellsNeeded = int(turnipCost - pocketBells)
+    print ("You will need a total of %s bells to buy your turnips! \n"
+           % ("{:,}".format(turnipCost)))
+    print ("You will need to withdraw an additional %s bells from the ABD to\
+ fulfill your turnip order! \n"
+           % ("{:,}".format(bellsNeeded)))
+    print ("Nook's Cranny will have a max selling price for turnips this week of %s bells"
+           % ((daisyPrice) * 6))
+    print ("\n")
+    isabelleTalk ("Turnips, turnips! Watch 'em rise!")
+    sleep(0.3)
+    isabelleTalk ("Try to earn a nice surprise! \n \n")
+    sleep(2.0)
+    exit()
 
 # Let's Sell Some Turnips!
 def sellTurnips():
     clear()
-    pocketSize = int(input("How many turnips (bundles of 10) are you selling? (Max:40)"))
-    turnipSellingPrice = int(input("What is current selling price? \n"))
+    turnipBundles = int(input("How many turnips (bundles of 10) are you selling (Max: 40)? \n"))
+
+    if turnipBundles > 40: # Avoid acidentally typo'ing something greater than 40
+        print ("")
+        clear()
+        YOLO()
+        sleep(1.2)
+        sellTurnips()
+    else:
+        print ("")
+    # Everything from here on out needs to reference the logs
+    turnipSellingPrice = int(input("What is the current selling price at Nook's Cranny? \n"))
     print ("")
-    turnipBuyingPrice = int(input("How much did you originally pay for the turnips? \n"))
+    turnipBuyingPrice = int(input("What was the original purchase price of the turnips? "))
     print ("")
-    turnipProfit = pocketSize * turnipSellingPrice * 100
+    totalProfit = turnipBundles * turnipSellingPrice * 100
     turnipMargin = str(round(turnipSellingPrice / turnipBuyingPrice * 100, 2))
+    netProfit = totalProfit - turnipBuyingPrice
+    clear()
 
     # Results
-    print ("You'll make %s bells!" % (("{:,}".format(turnipProfit))))
+    print ("You'll make a total of %s bells!"
+          % (("{:,}".format(totalProfit))))
     print ("")
-    print ("Your margin is :",turnipMargin,"% \n")
+    print ("Your net profit after original purchase price is %s bells!"
+          % (("{:,}".format(netProfit))))
+    print ("")
+    print ("Your bell profit margin is :",turnipMargin,"% \n\n")
+    exit()
+    # Stop with the logs
+    
+def residentServices():
+    clear()
+    YOLO()
+    Sunday()
 
-def YOLO():
-    print ("Let's try again! Please make a proper selection! \n \n")
+def YOLO(): # Player entered an incorrect response - Try again
+    clear()
+    sleep(0.7)
+    isabelleTalk ("Wuh-oh! Looks like we're getting interference... Hang on...")
+    sleep(0.7)
+    isabelleTalk ("Please make a proper selection and try again! \n \n")
+    sleep(1.0)
 
-Sunday()
+Sunday() # Start TurnipPY
