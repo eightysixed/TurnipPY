@@ -60,7 +60,7 @@ def buyTurnips():
     clear()
     print ("A full inventory of turnips with no inventory upgrades is 20 slots.")
     print ("A full inventory of turnips with one inventory upgrade is 30 slots.")
-    print ("A full inventory of turnips with max inventory upgrade is 40 slots.")
+    print ("A full inventory of turnips with max inventory upgrade is 40 slots. \n \n")
     turnipBundles = int(input("How many turnips would you like to buy? (Max: 40) \n"))
     if turnipBundles > 40: # Avoid acidentally typo'ing something greater than 40
         print ("")
