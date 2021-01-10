@@ -58,7 +58,10 @@ def Sunday(): # It all begins here!
 # Let's Buy Some Turnips!
 def buyTurnips():
     clear()
-    turnipBundles = int(input("How many turnips (bundles of 10) would you like to buy? (Max: 40) \n"))
+    print ("A full inventory of turnips with no inventory upgrades is 2,000.")
+    print ("A full inventory of turnips with one inventory upgrade is 3,000.")
+    print ("A full inventory of turnips with max inventory upgrade is 4,000.")
+    turnipBundles = int(input("How many turnips would you like to buy? (Max 40 slots) \n"))
     if turnipBundles > 40: # Avoid acidentally typo'ing something greater than 40
         print ("")
         clear()
@@ -120,7 +123,7 @@ def sellTurnips():
     print ("Your bell profit margin is :",turnipMargin,"% \n\n")
     exit()
     # Stop with the logs
-    
+
 def residentServices(): # This is not ready yet.
     clear()
     YOLO()
