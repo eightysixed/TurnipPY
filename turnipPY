@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-# bot-test
 import os
 import time
 from time import sleep
