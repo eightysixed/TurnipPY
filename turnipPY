@@ -28,14 +28,13 @@ def isabelleTalk(txt):
 
 # Ready, Set, Turnip!
 def Sunday(): # It all begins here!
-    clear()
+    clear() # Clear the screen before beginning
     isabelleTalk ("Welcome to TurnipPY! \n") # Sup?
     sleep(0.5)
     isabelleTalk ("Right now on your island it's %s and the weather is... comfortable."
           % time.asctime(time.localtime(time.time()) )) #Dodo / Isabelle
-    print ("")
     sleep(0.9)
-    isabelleTalk ("No news today, so let's talk about these turnip transactions... \n") #Isabelle Talk
+    isabelleTalk ("\nNo news today, so let's talk about these turnip transactions... \n") #Isabelle Talk
     sleep(0.5)
     # Are You Buying or Selling Turnips?
     print ("1.) I want to buy turnips from Daisy Mae!")
@@ -61,7 +60,7 @@ def buyTurnips():
     print ("A full inventory of turnips with no inventory upgrade is 20 slots.")
     print ("A full inventory of turnips with one inventory upgrade is 30 slots.")
     print ("A full inventory of turnips with max inventory upgrade is 40 slots. \n \n")
-    turnipBundles = int(input("How many turnips would you like to buy? \n"))
+    turnipBundles = int(input("How many turnips would you like to buy? (Max: 40) \n"))
     if turnipBundles > 40: # Avoid acidentally typo'ing something greater than 40
         print ("")
         clear()
@@ -69,14 +68,11 @@ def buyTurnips():
         sleep(1.2)
         buyTurnips()
     else:
-        print ("")
-    daisyPrice = int(input("How much is Daisy Mae selling turnips for today? \n"))
-    print ("")
+    daisyPrice = int(input("\nHow much is Daisy Mae selling turnips for today? \n"))
     turnipCost = int(turnipBundles * daisyPrice * 100)
-    pocketBells = int(input("How many bells do you currently have in your pockets? \n"))
-    print ("")
+    pocketBells = int(input("\nHow many bells do you currently have in your pockets? \n"))
     bellsNeeded = int(turnipCost - pocketBells)
-    print ("You will need a total of %s bells to buy your turnips! \n"
+    print ("\nYou will need a total of %s bells to buy your turnips! \n"
            % ("{:,}".format(turnipCost)))
     print ("You will need to withdraw an additional %s bells from the ABD to\
  fulfill your turnip order! \n"
@@ -102,25 +98,21 @@ def sellTurnips():
         sleep(1.2)
         sellTurnips()
     else:
-        print ("")
+
     # Everything from here on out needs to reference the logs
-    turnipSellingPrice = int(input("What is the current selling price at Nook's Cranny? \n"))
-    print ("")
-    turnipBuyingPrice = int(input("What was the original purchase price of the turnips? "))
-    print ("")
+    turnipSellingPrice = int(input("\nWhat is the current selling price at Nook's Cranny? \n"))
+    turnipBuyingPrice = int(input("\nWhat was the original purchase price of the turnips? "))
     totalProfit = turnipBundles * turnipSellingPrice * 100
     turnipMargin = str(round(turnipSellingPrice / turnipBuyingPrice * 100, 2))
     netProfit = totalProfit - turnipBuyingPrice
     clear()
 
     # Results
-    print ("You'll make a total of %s bells!"
+    print ("\nYou'll make a total of %s bells!"
           % (("{:,}".format(totalProfit))))
-    print ("")
-    print ("Your net profit after original purchase price is %s bells!"
+    print ("\nYour net profit after original purchase price is %s bells!"
           % (("{:,}".format(netProfit))))
-    print ("")
-    print ("Your bell profit margin is :",turnipMargin,"% \n\n")
+    print ("\nYour bell profit margin is :",turnipMargin,"% \n\n")
     exit()
     # Stop with the logs
 
