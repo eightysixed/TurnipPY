@@ -68,6 +68,7 @@ def buyTurnips():
         sleep(1.2)
         buyTurnips()
     else:
+        print("")
     daisyPrice = int(input("\nHow much is Daisy Mae selling turnips for today? \n"))
     turnipCost = int(turnipBundles * daisyPrice * 100)
     pocketBells = int(input("\nHow many bells do you currently have in your pockets? \n"))
@@ -98,7 +99,7 @@ def sellTurnips():
         sleep(1.2)
         sellTurnips()
     else:
-
+        print("")
     # Everything from here on out needs to reference the logs
     turnipSellingPrice = int(input("\nWhat is the current selling price at Nook's Cranny? \n"))
     turnipBuyingPrice = int(input("\nWhat was the original purchase price of the turnips? "))
